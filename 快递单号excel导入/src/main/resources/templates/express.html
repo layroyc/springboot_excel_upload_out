@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>快递单的导入</title>
+    <script src="/vue.js"></script>
+    <script src="//cdn.bootcss.com/axios/0.17.1/axios.min.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <el-row>
+                <el-col :span="3">
+                    <el-button type="primary" @click="outFile">下载文件</el-button>
+                </el-col>
+                <!--<el-button type="success">导入文件</el-button>-->
+                <el-col :span="3">
+                    <el-upload
+                            name="excelFile"
+                            class="upload-demo"
+                            action="/api/fileUpload/express"
+                            :show-file-list="false"
+                            :on-success="handleSuccess">
+                        <el-button type="success">导入文件</el-button>
+                    </el-upload>
+                </el-col>
+
+            </el-row>
+        </div>
+        <div style="color: black; font-size: 20px; margin: 10px 0">预约设置管理</div>
+
+    </div>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{},
+        methods:{
+            //文件的上传
+            handleSuccess(res, file) {
+
+            },
+            outFile:function () {
+                console.log("这里是导出文件")
+                window.location.href="/api/excel/export";
+            }
+        },
+        created:{}
+    });
+</script>
+</body>
+</html>
